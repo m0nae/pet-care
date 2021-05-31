@@ -1,18 +1,8 @@
-import { BuildOptions } from "sequelize";
-import { Model } from "sequelize";
-import { DataTypes } from "sequelize";
-import { Sequelize } from "sequelize";
+import { DataTypes, Sequelize } from "sequelize";
+import { UserModelStatic } from "../typings/models/user";
+const sequelize = require("sequelize");
 
 type DataTypesI = typeof DataTypes;
-
-interface UserModel extends Model {
-  name: string;
-  email: string;
-}
-
-type UserModelStatic = typeof Model & {
-  new (values?: object, options?: BuildOptions): UserModel;
-};
 
 module.exports = (sequelize: Sequelize, DataTypes: DataTypesI) => {
   const User = <UserModelStatic>sequelize.define("User", {
